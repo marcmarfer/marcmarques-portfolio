@@ -68,7 +68,7 @@ h1, p {
 }
 
 img {
-    width: 100%;
+    width: 90%;
     height: auto;
     mask-image: linear-gradient(
         black 80%,
