@@ -8,12 +8,6 @@
     </nav>
 </template>
 
-<script>
-export default {
-    name: 'Header'
-};
-</script>
-
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap');
 

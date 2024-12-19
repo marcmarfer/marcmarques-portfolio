@@ -1,12 +1,5 @@
-<script>
+<script setup>
 import Avatar from '../components/Avatar.vue';
-
-export default {
-  name: 'App',
-  components: {
-    Avatar
-  }
-};
 </script>
 
 <template>
@@ -58,7 +51,8 @@ export default {
     gap: 0.5rem;
 }
 
-h1, p {
+h1,
+p {
     margin: 0;
 }
 
