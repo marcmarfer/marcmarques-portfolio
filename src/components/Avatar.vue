@@ -8,7 +8,7 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-import avatarModel from '/src/assets/models/marc-model.glb';
+import avatarModel from '/src/assets/models/marc-model-2.glb';
 
 export default {
     name: 'Avatar',
