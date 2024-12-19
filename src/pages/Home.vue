@@ -15,7 +15,7 @@ export default {
             <div class="introduction-container">
                 <div class="text">
                     <h1 class="name">Marc Marqués</h1>
-                    <p class="description"><span>full-stack web developer</span> from Barcelona, Spain.</p>
+                    <p class="description"><span>Full-stack web developer</span> from Barcelona, Spain.</p>
                     <p class="description">Building modern, efficient, and reliable web solutions.</p>
                 </div>
             </div>

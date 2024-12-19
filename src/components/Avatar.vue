@@ -8,7 +8,7 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-import avatarModel from '/src/assets/models/marc-model-2.glb';
+import avatarModel from '/src/assets/models/marc-model.glb';
 
 export default {
     name: 'Avatar',
@@ -23,16 +23,16 @@ export default {
         const scene = new THREE.Scene();
         const camera = new THREE.PerspectiveCamera(45, container.offsetWidth / container.offsetHeight, 0.1, 1000);
         const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-        
+
         renderer.setSize(container.offsetWidth, container.offsetHeight);
         renderer.setClearColor(0x000000, 0);
         renderer.shadowMap.enabled = true;
-        
+
         container.appendChild(renderer.domElement); // Appending the renderer (canvas) to the container
 
         // Setting up the lights
         const ambientLight = new THREE.AmbientLight(0x404040, 30);
-        
+
         const spotlight = new THREE.SpotLight(0xffffff, 20, 10, 1);
         spotlight.penumbra = 0.5;
         spotlight.position.set(0, 3.5, 2.75);
@@ -54,9 +54,16 @@ export default {
         controls.minDistance = 2;
         controls.maxDistance = 4;
 
+        controls.mouseButtons = {
+            LEFT: null,
+            MIDDLE: THREE.MOUSE.DOLLY,
+            RIGHT: THREE.MOUSE.ROTATE,
+        };
+
         camera.position.set(0.5, 1.75, 3);
         controls.target.set(0, 0.8, 0);
         controls.update();
+
 
         // Loading the avatar model
         const loader = new GLTFLoader();
@@ -67,7 +74,7 @@ export default {
             (gltf) => {
                 this.loading = false;
                 const idleClip = gltf.animations.find(anim => anim.name === 'idleing');
-                // const waveClip = gltf.animations.find(anim => anim.name === 'waving');
+                const waveClip = gltf.animations.find(anim => anim.name === 'waving');
 
                 // Adding the model to the scene
                 mixer = new THREE.AnimationMixer(gltf.scene);
@@ -83,8 +90,34 @@ export default {
 
                 // Playing the idle animation
                 const idleAction = mixer.clipAction(idleClip);
+                const waveAction = mixer.clipAction(waveClip);
+
                 idleAction.setLoop(THREE.LoopRepeat);
                 idleAction.play();
+
+                window.addEventListener('click', () => {
+                    if (!waveAction.isRunning()) {
+                        waveAction.reset();
+                        waveAction.setLoop(THREE.LoopOnce);
+                        waveAction.play();
+
+                        idleAction.crossFadeTo(waveAction, 0.5, true);
+
+                        // Trigger back the idle transition before wave ends
+                        const waveDuration = waveAction.getClip().duration;
+
+                        console.log(waveDuration);
+
+                        setTimeout(() => {
+                            if (waveAction.isRunning()) {
+                                idleAction.reset().play();
+                                idleAction.setLoop(THREE.LoopRepeat);
+
+                                waveAction.crossFadeTo(idleAction, 0.5, true);
+                            }
+                        }, (waveDuration - 0.5) * 1000); // Trigger 0.5 seconds before wave ends
+                    }
+                });
 
                 const clock = new THREE.Clock();
 
@@ -108,6 +141,8 @@ export default {
 
                 function animate() {
                     requestAnimationFrame(animate);
+
+                    const canvas = renderer.domElement;
 
                     // Updating the camera aspect ratio and projection matrix
                     if (resizeRendererToDisplaySize(renderer)) {
