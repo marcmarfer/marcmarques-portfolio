@@ -1,15 +1,27 @@
+<script>
+import Avatar from '../components/Avatar.vue';
+
+export default {
+  name: 'App',
+  components: {
+    Avatar
+  }
+};
+</script>
+
 <template>
     <div class="home-container">
         <div class="left-container">
             <div class="introduction-container">
                 <div class="text">
                     <h1 class="name">Marc Marqués</h1>
-                    <p class="description">web developer</p>
+                    <p class="description"><span>full-stack web developer</span> from Barcelona, Spain.</p>
+                    <p class="description">Building modern, efficient, and reliable web solutions.</p>
                 </div>
             </div>
         </div>
         <div class="right-container">
-            <img src="../assets/images/template.png" alt="marc-marques-photo" />	
+            <Avatar />
         </div>
     </div>
 </template>
@@ -51,13 +63,17 @@ h1, p {
 }
 
 .name {
-    font-size: 4rem;
+    font-size: 3.75rem;
     color: #ffffff;
 }
 
 .description {
-    font-size: 2.5rem;
+    font-size: 1.5rem;
     color: #ccc;
+}
+
+span {
+    color: #80f9e1;
 }
 
 .right-container {
@@ -65,14 +81,5 @@ h1, p {
     align-items: center;
     justify-content: center;
     width: 50%;
-}
-
-img {
-    width: 90%;
-    height: auto;
-    mask-image: linear-gradient(
-        black 80%,
-        transparent
-    );
 }
 </style>

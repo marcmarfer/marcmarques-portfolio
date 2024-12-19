@@ -1,0 +1,151 @@
+<template>
+    <div ref="avatarContainer" class="avatar-container">
+        <div v-if="loading" class="loading-text">Loading model...</div>
+    </div>
+</template>
+
+<script>
+import * as THREE from 'three';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+import avatarModel from '/src/assets/models/marc-model.glb';
+
+export default {
+    name: 'Avatar',
+    data() {
+        return {
+            loading: true,
+        };
+    },
+    mounted() {
+        // Setting up the scene
+        const container = this.$refs.avatarContainer;
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(45, container.offsetWidth / container.offsetHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+        
+        renderer.setSize(container.offsetWidth, container.offsetHeight);
+        renderer.setClearColor(0x000000, 0);
+        renderer.shadowMap.enabled = true;
+        
+        container.appendChild(renderer.domElement); // Appending the renderer (canvas) to the container
+
+        // Setting up the lights
+        const ambientLight = new THREE.AmbientLight(0x404040, 30);
+        
+        const spotlight = new THREE.SpotLight(0xffffff, 20, 10, 1);
+        spotlight.penumbra = 0.5;
+        spotlight.position.set(0, 3.5, 2.75);
+        spotlight.castShadow = true;
+
+        scene.add(ambientLight);
+        scene.add(spotlight);
+
+        // Setting up the camera controls
+        const controls = new OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.05;
+        controls.enableZoom = true;
+        controls.enableRotate = true;
+
+        controls.minPolarAngle = 0;
+        controls.maxPolarAngle = Math.PI;
+
+        controls.minDistance = 2;
+        controls.maxDistance = 4;
+
+        camera.position.set(0.5, 1.75, 3);
+        controls.target.set(0, 0.8, 0);
+        controls.update();
+
+        // Loading the avatar model
+        const loader = new GLTFLoader();
+        let mixer;
+
+        loader.load(
+            avatarModel,
+            (gltf) => {
+                this.loading = false;
+                const idleClip = gltf.animations.find(anim => anim.name === 'idleing');
+                // const waveClip = gltf.animations.find(anim => anim.name === 'waving');
+
+                // Adding the model to the scene
+                mixer = new THREE.AnimationMixer(gltf.scene);
+                scene.add(gltf.scene);
+
+                // Adding a ground plane
+                const groundGeometry = new THREE.CylinderGeometry(0.6, 0.6, 0.1, 64);
+                const groundMaterial = new THREE.MeshStandardMaterial({ color: '#80f9e1' });
+                const groundMesh = new THREE.Mesh(groundGeometry, groundMaterial);
+                groundMesh.position.y = -0.05;
+                groundMesh.receiveShadow = true;
+                scene.add(groundMesh);
+
+                // Playing the idle animation
+                const idleAction = mixer.clipAction(idleClip);
+                idleAction.setLoop(THREE.LoopRepeat);
+                idleAction.play();
+
+                const clock = new THREE.Clock();
+
+                // Resizing the canvas "drawingbuffer" size to fit the container without being blurry
+                function resizeRendererToDisplaySize(renderer) {
+                    const canvas = renderer.domElement;
+
+                    // Adding pixels to the canvas to make it look sharper and cleaner
+                    const pixelRatio = 5;
+                    // const pixelRatio = window.devicePixelRatio;
+                    const width = Math.floor(canvas.clientWidth * pixelRatio);
+                    const height = Math.floor(canvas.clientHeight * pixelRatio);
+                    const needResize = canvas.width !== width || canvas.height !== height;
+
+                    //so its only resized when it needs to be
+                    if (needResize) {
+                        renderer.setSize(width, height, false);
+                    }
+                    return needResize;
+                }
+
+                function animate() {
+                    requestAnimationFrame(animate);
+
+                    // Updating the camera aspect ratio and projection matrix
+                    if (resizeRendererToDisplaySize(renderer)) {
+                        camera.aspect = canvas.clientWidth / canvas.clientHeight;
+                        camera.updateProjectionMatrix();
+                    }
+
+                    mixer.update(clock.getDelta()); // Updating the animation mixer
+                    controls.update(); // Updating the camera controls
+                    renderer.render(scene, camera); // Drawing the scene
+                }
+                animate();
+            },
+            (xhr) => {
+                const percentCompletion = Math.round((xhr.loaded / xhr.total) * 100);
+                console.log(`Loading model... ${percentCompletion}%`);
+            },
+            (error) => {
+                console.error('Error loading model', error);
+            }
+        );
+    },
+};
+</script>
+
+<style scoped>
+.avatar-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.loading-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    color: white;
+}
+</style>
