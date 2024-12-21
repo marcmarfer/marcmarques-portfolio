@@ -1,6 +1,10 @@
 body {
-    height: 100vh;
     background-image: url('./images/gradient-bg.png');
     background-size: cover;
     background-repeat: no-repeat;
+    cursor: none;
+}
+
+a, button, .clickable {
+    cursor: none;
 }

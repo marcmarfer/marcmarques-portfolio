@@ -70,12 +70,12 @@ onMounted(async () => {
         controls.maxDistance = 4;
 
         controls.mouseButtons = {
-            LEFT: null,
+            LEFT: THREE.MOUSE.ROTATE,
             MIDDLE: THREE.MOUSE.DOLLY,
-            RIGHT: THREE.MOUSE.ROTATE,
+            RIGHT: null,
         };
 
-        camera.position.set(0.5, 1.75, 3);
+        camera.position.set(0.5, 1.75, 2.85);
         controls.target.set(0, 0.8, 0);
         controls.update();
 
@@ -103,9 +103,9 @@ onMounted(async () => {
         const waveAction = mixer.clipAction(waveClip);
 
         idleAction.setLoop(THREE.LoopRepeat);
-        idleAction.play();
+        idleAction.play();        
 
-        window.addEventListener('click', () => {
+        window.addEventListener('contextmenu', () => {
             if (!waveAction.isRunning()) {
                 waveAction.reset();
                 waveAction.setLoop(THREE.LoopOnce);
