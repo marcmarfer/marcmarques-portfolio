@@ -26,6 +26,7 @@ import Avatar from './Avatar.vue';
     display: flex;
     height: 90%;
     gap: 2rem;
+    padding-top: 5%;
 }
 
 .left-container {
