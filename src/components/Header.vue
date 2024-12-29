@@ -1,11 +1,28 @@
+<script setup>
+//script for the active link class to do the underline effect
+import { ref, onMounted } from 'vue';
+
+const currentPath = ref('');
+
+const updateActiveLink = () => {
+  currentPath.value = window.location.hash || window.location.pathname;
+};
+
+onMounted(() => {
+  updateActiveLink();
+  window.addEventListener('hashchange', updateActiveLink);
+  window.addEventListener('popstate', updateActiveLink);
+});
+</script>
+
 <template>
-    <nav>
-        <router-link to="/" class="nav-link" exact-active-class="active">home</router-link>
-        <router-link to="/experience" class="nav-link" exact-active-class="active">experience</router-link>
-        <router-link to="/projects" class="nav-link" exact-active-class="active">projects</router-link>
-        <router-link to="/about-me" class="nav-link" exact-active-class="active">about me</router-link>
-        <router-link to="/contact" class="nav-link" exact-active-class="active">contact</router-link>
-    </nav>
+  <nav>
+    <a href="#home" :class="['nav-link', currentPath === '#home' ? 'active' : '']">home</a>
+    <a href="#experience" :class="['nav-link', currentPath === '#experience' ? 'active' : '']">experience</a>
+    <a href="#projects" :class="['nav-link', currentPath === '#projects' ? 'active' : '']">projects</a>
+    <a href="#about-me" :class="['nav-link', currentPath === '#about-me' ? 'active' : '']">about me</a>
+    <a href="#contact" :class="['nav-link', currentPath === '#contact' ? 'active' : '']">contact</a>
+  </nav>
 </template>
 
 <style scoped>
