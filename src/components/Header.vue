@@ -30,7 +30,7 @@ onMounted(() => {
 
 nav {
   position: fixed;
-  top: 2%;
+  top: 2.5%;
   left: 50%;
   transform: translateX(-50%);
   width: 29%;
@@ -41,8 +41,9 @@ nav {
   gap: 2rem;
   font-family: 'Onest', sans-serif;
   border-radius: 50px;
-  background-color: rgba(150, 150, 150, 0.1);
+  background-color: rgba(120, 120, 120, 0.1);
   backdrop-filter: blur(8px);
+  border: 1px solid #545454;
   z-index: 10;
 }
 
