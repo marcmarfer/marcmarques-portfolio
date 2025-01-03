@@ -75,7 +75,7 @@ onMounted(async () => {
             RIGHT: null,
         };
 
-        camera.position.set(0.5, 1.75, 2.85);
+        camera.position.set(0.5, 1.75, 2.95);
         controls.target.set(0, 0.8, 0);
         controls.update();
 
