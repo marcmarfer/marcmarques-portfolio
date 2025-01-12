@@ -1,6 +1,11 @@
 <script setup>
-//script for the active link class to do the underline effect
 import { ref, onMounted } from 'vue';
+
+const homeButton = ref(null);
+const experienceButton = ref(null);
+const projectsButton = ref(null);
+const aboutMeButton = ref(null);
+const contactButton = ref(null);
 
 const currentPath = ref('');
 
@@ -10,18 +15,42 @@ const updateActiveLink = () => {
 
 onMounted(() => {
   updateActiveLink();
-  window.addEventListener('hashchange', updateActiveLink);
-  window.addEventListener('popstate', updateActiveLink);
+ 
+  const links = {
+    '#home': homeButton,
+    '#experience': experienceButton,
+    '#projects': projectsButton,
+    '#about-me': aboutMeButton,
+    '#contact': contactButton,
+  }
+
+  const offsetTop = 100;
+
+  for (const [path, button] of Object.entries(links)) {
+    console.log(button, path)
+    button.value.addEventListener('click', () => {
+      currentPath.value = path;
+      const destination = document.querySelector(path);
+      const rect = destination.getBoundingClientRect();
+      const app = document.querySelector('#app');
+
+      app.scrollTo({
+        top: rect.top + app.scrollTop - offsetTop,
+        behavior: 'smooth',
+      });
+    });
+  }
 });
+
 </script>
 
 <template>
   <nav>
-    <a href="#home" :class="['nav-link', currentPath === '#home' ? 'active' : '']">home</a>
-    <a href="#experience" :class="['nav-link', currentPath === '#experience' ? 'active' : '']">experience</a>
-    <a href="#projects" :class="['nav-link', currentPath === '#projects' ? 'active' : '']">projects</a>
-    <a href="#about-me" :class="['nav-link', currentPath === '#about-me' ? 'active' : '']">about me</a>
-    <a href="#contact" :class="['nav-link', currentPath === '#contact' ? 'active' : '']">contact</a>
+    <button ref="homeButton" :class="['nav-link', currentPath === '#home' ? 'active' : '']">home</button>
+    <button ref="experienceButton" :class="['nav-link', currentPath === '#experience' ? 'active' : '']">experience</button>
+    <button ref="projectsButton" :class="['nav-link', currentPath === '#projects' ? 'active' : '']">projects</button>
+    <button ref="aboutMeButton" :class="['nav-link', currentPath === '#about-me' ? 'active' : '']">about me</button>
+    <button ref="contactButton" :class="['nav-link', currentPath === '#contact' ? 'active' : '']">contact</button>
   </nav>
 </template>
 
@@ -52,6 +81,7 @@ nav {
   padding: 0px 6px;
   color: white;
   font-size: 1rem;
+  font-weight: 500;
   transition: color 0.3s ease;
 }
 

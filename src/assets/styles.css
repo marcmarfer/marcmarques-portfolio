@@ -8,3 +8,7 @@ body {
 a, button, .clickable {
     cursor: none;
 }
+
+button {
+    all: unset;
+}
