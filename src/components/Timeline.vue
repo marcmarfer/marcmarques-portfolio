@@ -1,81 +1,32 @@
+<script setup>
+const props = defineProps({
+  experiences: {
+    type: Array,
+    required: true,
+  },
+});
+</script>
+
 <template>
-    <div class="timeline-container">
-      <div class="timeline">
-        <div v-for="(experiences, index) in experiences" :key="index" class="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <h3>{{ experiences.title }}</h3>
-            <p>{{ experiences.date }}</p>
-            <p>{{ experiences.description }}</p>
-          </div>
+  <div class="w-full px-5 md:px-6 overflow-x-hidden">
+    <div class="relative max-w-4xl mx-auto">
+      <div class="absolute left-[15px] md:left-4 top-0 bottom-0 w-0.5 bg-gray-400"></div>
+      <div v-for="(experience, index) in experiences" :key="index"
+        class="relative pl-[50px] md:pl-14 mb-10 md:mb-12 flex flex-col">
+        <div
+          class="absolute left-[6px] md:left-[4px] top-[5px] w-5 h-5 md:w-6 md:h-6 bg-gray-600 rounded-full border-2 border-white z-10">
+        </div>
+        <div class="bg-white/5 rounded-lg p-5 md:p-6 w-full shadow-lg shadow-black/25">
+          <h3 class="m-0 text-[1rem] md:text-[1.2rem] text-[#fbf060] font-['Manrope',_sans-serif] font-bold">
+            {{ experience.title }}
+          </h3>
+          <p class="mt-1 mb-2.5 text-base md:text-[1rem] text-gray-400 font-['Manrope',_sans-serif] italic">
+            {{ experience.date }}
+          </p>
+          <p class="my-1 text-sm md:text-base text-white font-['Manrope',_sans-serif] leading-relaxed" v-html="experience.description">
+          </p>
         </div>
       </div>
     </div>
-  </template>
-  
-  <script setup>
-  import { defineProps } from "vue";
-  
-  const props = defineProps({
-    experiences: {
-      type: Array,
-      required: true,
-    },
-  });
-  </script>
-  
-  <style scoped>
-  .timeline-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    width: 100%;
-  }
-  
-  .timeline {
-    position: relative;
-    width: 2px;
-    background-color: #ccc;
-    height: 100%;
-    transform: translateX(-250px);
-  }
-  
-  .timeline-item {
-    position: relative;
-    margin-bottom: 40px;
-    padding-left: 25px;
-  }
-  
-  .timeline-dot {
-    position: absolute;
-    left: -13px;
-    top: 0;
-    width: 22px;
-    height: 22px;
-    background-color: #686868;
-    border-radius: 50%;
-    border: 2px solid #ffffff;
-  }
-
-  .timeline-content {
-    position: relative;
-    padding: 20px;
-    width: 500px;
-  }
-  
-  .timeline-content h3 {
-    margin: 0;
-    font-size: 1.8rem;
-    color: white;
-    font-family: 'Manrope', sans-serif;
-  }
-  
-  .timeline-content p {
-    margin: 5px 0;
-    font-size: 1.2rem;
-    color: white;
-    font-family: 'Manrope', sans-serif;
-  }
-  </style>
-  
+  </div>
+</template>

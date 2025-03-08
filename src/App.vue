@@ -1,11 +1,11 @@
 <script setup>
-import Header from './components/Header.vue';
+import Header from './pages/Header.vue';
 import CursorEffect from './components/CursorEffect.vue';
-import Home from './components/Home.vue';
-import Experience from './components/Experience.vue';
-import Projects from './components/Projects.vue';
-import Aboutme from './components/Aboutme.vue';
-import Contact from './components/Contact.vue';
+import Home from './pages/Home.vue';
+import Experience from './pages/Experience.vue';
+import Projects from './pages/Projects.vue';
+import Aboutme from './pages/Aboutme.vue';
+import Contact from './pages/Contact.vue';
 </script>
 
 <template>
