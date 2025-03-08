@@ -176,15 +176,15 @@ function createGround(scene) {
   jsLogoTexture.wrapS = THREE.RepeatWrapping;
   jsLogoTexture.wrapT = THREE.RepeatWrapping;
   
-  const jsYellow = 0xfbf060;
+  const jsYellowDarker = 0xc4bc4d;
   
   const materials = [
-    new THREE.MeshBasicMaterial({ color: jsYellow }),
-    new THREE.MeshBasicMaterial({ color: jsYellow }),
+    new THREE.MeshBasicMaterial({ color: jsYellowDarker }),
+    new THREE.MeshBasicMaterial({ color: jsYellowDarker }),
     new THREE.MeshBasicMaterial({ map: jsLogoTexture }),
-    new THREE.MeshBasicMaterial({ color: jsYellow }),
-    new THREE.MeshBasicMaterial({ color: jsYellow }),
-    new THREE.MeshBasicMaterial({ color: jsYellow })
+    new THREE.MeshBasicMaterial({ color: jsYellowDarker }),
+    new THREE.MeshBasicMaterial({ color: jsYellowDarker }),
+    new THREE.MeshBasicMaterial({ color: jsYellowDarker })
   ];
   
   const groundMesh = new THREE.Mesh(groundGeometry, materials);

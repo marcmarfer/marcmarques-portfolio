@@ -54,7 +54,7 @@ onMounted(() => {
         class="position-relative px-1.5 text-white text-base font-medium hover:text-[#fbf060]">projects</button>
       <button ref="aboutMeButton" 
         :style="{ color: currentPath === '#about-me' ? '#fbf060' : '' }"
-        class="position-relative px-1.5 text-white text-base font-medium hover:text-[#fbf060]">about me</button>
+        class="position-relative px-1.5 text-white text-base font-medium hover:text-[#fbf060]">about</button>
       <button ref="contactButton"
         :style="{ color: currentPath === '#contact' ? '#fbf060' : '' }"
         class="position-relative px-1.5 text-white text-base font-medium hover:text-[#fbf060]">contact</button>
