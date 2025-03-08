@@ -12,7 +12,7 @@ body {
   display: flex;
   min-width: 320px;
   min-height: 100vh;
-  background-image: url('./assets/images/gradient-bg.png');
+  background-image: url('@/assets/images/gradient-bg.png');
   background-size: cover;
   background-repeat: no-repeat;
   cursor: none;

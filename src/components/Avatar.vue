@@ -8,11 +8,12 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted, nextTick } from 'vue';
 import * as THREE from 'three';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-import avatarModel from '/src/assets/models/marc-model.glb';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+import { ref, onMounted, onUnmounted, nextTick } from 'vue';
+import avatarModel from '@/assets/models/marc-model.glb';
+import jsLogoUrl from '@/assets/images/js-logo.png';
 
 // Reactive state
 const loading = ref(true);
@@ -168,7 +169,7 @@ function createGround(scene) {
   const groundGeometry = new THREE.BoxGeometry(1, 0.1, 1);
   
   const textureLoader = new THREE.TextureLoader();
-  const jsLogoTexture = textureLoader.load('/src/assets/images/js-logo.png');
+  const jsLogoTexture = textureLoader.load(jsLogoUrl);
   
   jsLogoTexture.center = new THREE.Vector2(0.5, 0.5);
   jsLogoTexture.repeat.set(1, 1);
