@@ -1,6 +1,7 @@
 <template>
-    <div ref="avatarContainer" class="w-full h-full relative flex items-center justify-center">
-        <div v-if="loading" class="flex flex-col items-center justify-center">
+    <div ref="avatarContainer" class="w-full h-full relative flex items-center justify-center w-full md:w-1/2 h-[700px] md:h-[850px] order-2 md:mt-0 flex items-center justify-center overflow-hidden">
+        <canvas ref="canvas" class="w-full h-full"></canvas>
+        <div v-if="loading" class="flex flex-col items-center justify-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
             <div class="w-16 h-16 border-4 border-t-4 border-[#fbf060] border-t-transparent rounded-full animate-spin mb-4"></div>
             <div class="text-xl text-white">{{ loadingProgress }}%</div>
         </div>
@@ -19,6 +20,7 @@ import jsLogoUrl from '@/assets/images/js-logo.png';
 const loading = ref(true);
 const loadingProgress = ref(0);
 const avatarContainer = ref(null);
+const canvas = ref(null);
 
 // Three.js variables
 let renderer, camera, scene, controls, mixer, clock;
@@ -86,6 +88,7 @@ async function loadModel() {
 function setupRenderer(container) {
   // Simple renderer configuration for all browsers
   renderer = new THREE.WebGLRenderer({ 
+    canvas: canvas.value,
     alpha: true, 
     antialias: true,
     powerPreference: 'high-performance',
@@ -97,8 +100,6 @@ function setupRenderer(container) {
   renderer.setClearColor(0x000000, 0);
   renderer.shadowMap.enabled = true;
   renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-  
-  container.appendChild(renderer.domElement);
   
   return renderer;
 }
