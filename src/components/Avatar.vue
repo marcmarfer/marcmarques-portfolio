@@ -1,6 +1,6 @@
 <template>
     <div ref="avatarContainer" class="w-full h-full relative flex items-center justify-center">
-        <div v-if="loading" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center">
+        <div v-if="loading" class="flex flex-col items-center justify-center">
             <div class="w-16 h-16 border-4 border-t-4 border-[#fbf060] border-t-transparent rounded-full animate-spin mb-4"></div>
             <div class="text-xl text-white">{{ loadingProgress }}%</div>
         </div>
@@ -311,12 +311,7 @@ function updateRendererSize() {
   if (canvas) {
     canvas.style.width = `${canvasWidth}px`;
     canvas.style.height = `${canvasHeight}px`;
-    
-    canvas.style.position = 'absolute';
-    canvas.style.left = '50%';
-    canvas.style.top = '50%';
-    canvas.style.transform = 'translate(-50%, -50%)';
-    
+
     canvas.style.maxWidth = '100%';
     canvas.style.maxHeight = '100%';
   }
