@@ -3,7 +3,7 @@ import Avatar from '../components/Avatar.vue';
 </script>
 
 <template>
-    <div class="flex flex-col md:flex-row h-[100%] gap-4 md:gap-8 pt-[calc(5%+60px)] md:pt-[5%]">
+    <div class="flex flex-col md:flex-row h-[100%] gap-4 md:gap-8 pt-[calc(5%+70px)] md:pt-[5%]">
         <div class="flex flex-col justify-center w-full md:w-1/2 font-['Manrope'] order-1 md:order-1">
             <div class="flex justify-start items-center gap-10 w-full">
                 <div class="flex flex-col gap-2">

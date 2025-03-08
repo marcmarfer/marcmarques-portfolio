@@ -45,7 +45,7 @@ onMounted(() => {
 <template>
   <nav>
     <div
-      class="fixed text-white top-3.5 left-0 right-0 mx-auto w-fit max-w-[90%] h-5% flex justify-center items-center gap-4 font-['Onest'] rounded-[50px] bg-gray-500/10 backdrop-blur-md border border-[#545454] z-10 px-4 py-2">
+      class="fixed text-white top-3.5 left-0 right-0 mx-auto w-fit max-w-[90%] h-5% flex justify-center items-center gap-1 font-['Onest'] rounded-[50px] bg-gray-500/10 backdrop-blur-md border border-[#545454] z-10 px-4 py-2">
       <button ref="experienceButton" 
         :style="{ color: currentPath === '#experience' ? '#fbf060' : '' }"
         class="position-relative px-1.5 text-white text-base font-medium hover:text-[#fbf060]">experience</button>
