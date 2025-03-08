@@ -14,7 +14,7 @@ import Avatar from '../components/Avatar.vue';
             </div>
         </div>
 
-        <div class="w-full md:w-1/2 h-[700px] md:h-[850px] order-2 md:order-2 md:mt-0 flex items-center justify-center">
+        <div class="w-full md:w-1/2 h-[700px] md:h-[850px] order-2 md:order-2 md:mt-0 flex items-center justify-center overflow-hidden">
             <Avatar />
         </div>
     </div>
