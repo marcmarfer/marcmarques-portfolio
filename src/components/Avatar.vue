@@ -1,5 +1,5 @@
 <template>
-    <div ref="avatarContainer" class="w-full h-full relative flex items-center justify-center w-full md:w-1/2 h-[700px] md:h-[850px] order-2 md:mt-0 flex items-center justify-center overflow-hidden">
+    <div ref="avatarContainer" class="w-full h-full relative flex items-center justify-center md:w-1/2 order-2 md:mt-0 flex items-center justify-center overflow-hidden">
         <canvas ref="canvas" class="w-full h-full"></canvas>
         <div v-if="loading" class="flex flex-col items-center justify-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
             <div class="w-16 h-16 border-4 border-t-4 border-[#fbf060] border-t-transparent rounded-full animate-spin mb-4"></div>

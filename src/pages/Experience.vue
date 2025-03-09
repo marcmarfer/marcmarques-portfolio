@@ -4,10 +4,10 @@ import { ref } from 'vue';
 
 const experiences = ref([
 {
-    title: "Co-Founder & CEO - Otio App",
+    title: "CEO & Co-Founder - Otio App",
     date: "June 2024 - Present",
     description:
-      "Together with my partner, I built our startup Otio from scratch—the first online ticketing application for all types of tasting experiences. I handle business, programming, and design, developing new features and managing our commercial efforts. Check it out here: <a href='https://otioapp.com' target='_blank' rel='noopener noreferrer' class='text-[#fbf060] underline hover:text-[#f8ea36] transition-colors'>Otio App</a>"
+      "Together with my partner, I built our startup Otio from scratch—the first online ticketing application for all types of tasting experiences. I handle business (going to events like MWC, dealing with clients, etc.), programming, and design, developing new features and managing our commercial efforts. Check it out here: <a href='https://otioapp.com' target='_blank' rel='noopener noreferrer' class='text-[#fbf060] underline hover:text-[#f8ea36] transition-colors'>Otio App</a>"
   },
   {
     title: "Web Developer - Digalix",
@@ -19,10 +19,8 @@ const experiences = ref([
 </script>
 
 <template>
-  <div class="w-full max-w-full px-4 md:px-8 overflow-x-hidden">
-    <h1
-      class="text-[2rem] text-center md:text-[3rem] text-white font-semibold m-0 mb-8 md:mb-12 font-['Onest',_sans-serif]">
-      Experience</h1>
+  <div class="w-full max-w-full md:px-8 overflow-x-hidden">
+    <h1 class="text-[2rem] md:text-center md:text-[3rem] text-white font-semibold m-0 mb-8 md:mb-12 font-['Onest',_sans-serif]">Experience</h1>
     <Timeline :experiences="experiences" />
   </div>
 </template>
