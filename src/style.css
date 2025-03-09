@@ -10,7 +10,7 @@
 body {
   margin: 0;
   padding: 0;
-  background-image: url('@/assets/images/gradient-bg.png');
+  background-image: url('/images/gradient-bg.png');
   background-size: cover;
   background-repeat: no-repeat;
   overflow: hidden;
