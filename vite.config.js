@@ -5,7 +5,7 @@ import { resolve } from 'path'
 
 // https://vite.dev/config/
 export default defineConfig({
-  assetsInclude: ['**/*.glb'],
+  assetsInclude: ['**/*.glb', '**/*.JPEG', '**/*.jpeg', '**/*.JPG', '**/*.jpg'],
   plugins: [vue(), tailwindcss()],
   resolve: {
     alias: {
