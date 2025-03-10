@@ -1,5 +1,7 @@
 <script setup>
-import { onMounted, onUnmounted } from 'vue';
+import { onMounted, onUnmounted, inject, watch } from 'vue';
+
+const isCursorVisible = inject('isCursorVisible');
 
 onMounted(() => {
     const cursorLight = document.querySelector('#cursor-light');
@@ -11,10 +13,15 @@ onMounted(() => {
 
     window.addEventListener('mousemove', handleMouseMove);
 
-    onUnmounted(() => {
-        document.removeEventListener("mousemove", handleMouseMove);
+    watch(isCursorVisible, (visible) => {
+        if (cursorLight) {
+            cursorLight.style.opacity = visible ? '1' : '0';
+        }
     });
 
+    onUnmounted(() => {
+        window.removeEventListener("mousemove", handleMouseMove);
+    });
 });
 </script>
 

@@ -1,6 +1,6 @@
 <script setup>
 import TechStackBar from '../components/TechStackBar.vue';
-import { ref } from 'vue';
+import { ref, inject } from 'vue';
 
 const technologies = ref([
     { name: 'HTML', icon: 'html.png' },
@@ -25,11 +25,25 @@ const technologies = ref([
     { name: 'Docker', icon: 'docker.png' },
     { name: 'Nginx', icon: 'nginx.png' },
 ])
+
+const isCursorVisible = inject('isCursorVisible');
+
+const handleTechStackHover = () => {
+    isCursorVisible.value = false;
+};
+
+const handleTechStackLeave = () => {
+    isCursorVisible.value = true;
+};
 </script>
 
 <template>
     <div>
         <h1 class="text-[2rem] md:text-center md:text-[3rem] text-white font-semibold m-0 mb-8 md:mb-12 font-['Onest',_sans-serif]">Projects</h1>
-        <TechStackBar :technologies="technologies"/>
+        <TechStackBar 
+            :technologies="technologies"
+            @mouseenter="handleTechStackHover"
+            @mouseleave="handleTechStackLeave"
+        />
     </div>
 </template>

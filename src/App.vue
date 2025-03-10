@@ -5,6 +5,10 @@ import Home from './pages/Home.vue';
 import Experience from './pages/Experience.vue';
 import Projects from './pages/Projects.vue';
 import Aboutme from './pages/Aboutme.vue';
+import { ref, provide } from 'vue';
+
+const isCursorVisible = ref(true);
+provide('isCursorVisible', isCursorVisible);
 </script>
 
 <template>

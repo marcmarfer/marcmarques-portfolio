@@ -65,7 +65,11 @@ function maskClass() {
 </script>
 
 <template>
-  <div class="tech-stack-container relative max-w-4xl mx-auto mb-12 h-16">
+  <div 
+    class="tech-stack-container relative max-w-4xl mx-auto mb-12 h-16"
+    @mouseenter="$emit('mouseenter')"
+    @mouseleave="$emit('mouseleave')"
+  >
     <div 
       ref="container" 
       :class="['flex h-full gap-10 text-white overflow-x-auto scrollbar-hide cursor-grab no-select', maskClass()]"
