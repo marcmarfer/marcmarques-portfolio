@@ -16,7 +16,7 @@ const technologies = ref([
     { name: 'Figma', icon: 'figma.png' },
     { name: 'Threejs', icon: 'threejs.png' },
     { name: 'Laravel', icon: 'laravel.png' },
-    { name: 'Node', icon: 'node.png' }, 
+    { name: 'Nodejs', icon: 'nodejs.png' }, 
     { name: 'Express', icon: 'express.png' },
     { name: 'MySQL', icon: 'mysql.png' },
     { name: 'PostgreSQL', icon: 'postgresql.png' },
@@ -24,7 +24,6 @@ const technologies = ref([
     { name: 'Github', icon: 'github.png' },
     { name: 'Docker', icon: 'docker.png' },
     { name: 'Nginx', icon: 'nginx.png' },
-    { name: 'Apache', icon: 'apache.png' },
 ])
 </script>
 
