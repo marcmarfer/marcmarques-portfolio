@@ -40,14 +40,14 @@ const handleCursorLeave = () => {
 
 <template>
     <div>
-        <h1 class="text-[2rem] md:text-center md:text-[2.5rem] text-white font-semibold mb-8 md:mb-12 font-['Onest',_sans-serif]">Projects</h1>
+        <h1 class="text-[2rem] md:text-center md:text-[2.5rem] text-white font-semibold mb-8 md:mb-10 font-['Onest',_sans-serif]">Projects</h1>
         <TechStackBar
             :technologies="technologies"
             @mouseenter="handleCursorHover"
             @mouseleave="handleCursorLeave"
         />
-        <h2 class="max-w-4xl mx-auto text-[1.25rem] md:text-[1.5rem] text-white font-semibold mb-2 font-['Onest',_sans-serif]">Launched and maintained</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto mb-4 md:mb-6">
+        <h2 class="max-w-4xl mx-auto text-[1.25rem] md:text-[1.5rem] text-white font-semibold mb-3 font-['Onest',_sans-serif]">Launched and maintained</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto mb-6">
             <ProjectCard 
             :image="'/images/projects/otio.png'" 
             :title="'Otio App'" 
@@ -73,8 +73,8 @@ const handleCursorLeave = () => {
             @mouseenter="handleCursorHover"
             @mouseleave="handleCursorLeave"/>
         </div>
-        <h2 class="max-w-4xl mx-auto text-[1.25rem] md:text-[1.5rem] text-white font-semibold mb-2 font-['Onest',_sans-serif]">In Progress...</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-10 md:mb-12">
+        <h2 class="max-w-4xl mx-auto text-[1.25rem] md:text-[1.5rem] text-white font-semibold mb-3 font-['Onest',_sans-serif]">In Progress...</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-8 md:mb-10">
             <ProjectCard 
             :image="'/images/projects/bitbot.png'" 
             :title="'BitBot'"

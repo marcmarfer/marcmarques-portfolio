@@ -66,7 +66,7 @@ function maskClass() {
 
 <template>
   <div 
-    class="tech-stack-container relative max-w-4xl mx-auto mb-12 h-16"
+    class="tech-stack-container relative max-w-4xl mx-auto mb-10 h-16"
     @mouseenter="$emit('mouseenter')"
     @mouseleave="$emit('mouseleave')"
   >

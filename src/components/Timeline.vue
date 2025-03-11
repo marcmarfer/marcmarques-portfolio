@@ -12,7 +12,7 @@ const props = defineProps({
     <div class="relative max-w-4xl mx-auto">
       <div class="absolute left-[7px] top-0 bottom-0 w-0.5 bg-gray-600"></div>
       <div v-for="(experience, index) in experiences" :key="index"
-        class="relative pl-[35px] md:pl-14 mb-10 md:mb-12 flex flex-col">
+        class="relative pl-[35px] md:pl-14 mb-8 md:mb-12 flex flex-col">
         <div
           class="absolute left-[0px] top-[5px] w-4 h-4 bg-[#fbf060] rounded-full z-10">
         </div>
