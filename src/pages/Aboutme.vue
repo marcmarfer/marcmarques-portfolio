@@ -1,6 +1,6 @@
 <template>
     <div class="w-full max-w-full pb-20">
-        <h1 class="text-[2rem] md:text-center md:text-[2.5rem] text-white font-semibold m-0 mb-8 md:mb-12 font-['Onest',_sans-serif]">About Me</h1>
+        <h1 class="text-[2rem] md:text-center md:text-[2.5rem] text-white font-semibold m-0 mb-8 md:mb-10 font-['Onest',_sans-serif]">About Me</h1>
         <div class="flex flex-col relative max-w-4xl mx-auto lg:flex-row gap-6 md:gap-10 md:items-center">
             <img src="/images/me.JPEG" alt="Foto de Marc Marqués" class="w-[200px] md:w-[250px] h-auto rounded-lg text-white text-center
                 md:mx-auto md:mx-0 lg:order-2 shadow-md transition-all duration-300 hover:inner-shadow-lg">
