@@ -12,7 +12,7 @@ const props = defineProps({
 </script>
 
 <template>
-    <div class="h-18 md:h-22 overflow-hidden rounded-xl md:shadow-lg transition-all duration-75">
+    <div class="h-18 md:h-20 overflow-hidden rounded-xl md:shadow-lg transition-all duration-75">
         <div class="w-full h-full flex items-center font-['Manrope',_sans-serif] font-semibold md:bg-[#343434] md:p-3">
             <div class="h-full aspect-square flex-shrink-0 mr-4">
                 <img :src="props.image" :alt="props.title" class="h-full w-full object-cover rounded-xl">
