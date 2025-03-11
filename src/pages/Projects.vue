@@ -46,7 +46,7 @@ const handleCursorLeave = () => {
             @mouseenter="handleCursorHover"
             @mouseleave="handleCursorLeave"
         />
-        <h2 class="max-w-4xl mx-auto text-[1.25rem] md:text-[1.5rem] text-white font-semibold mb-3 font-['Onest',_sans-serif]">Launched and maintained</h2>
+        <h2 class="max-w-4xl mx-auto text-[1.25rem] md:text-[1.5rem] text-white font-semibold mb-4 font-['Onest',_sans-serif]">Launched and maintained</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto mb-6">
             <ProjectCard 
             :image="'/images/projects/otio.png'" 
@@ -73,8 +73,8 @@ const handleCursorLeave = () => {
             @mouseenter="handleCursorHover"
             @mouseleave="handleCursorLeave"/>
         </div>
-        <h2 class="max-w-4xl mx-auto text-[1.25rem] md:text-[1.5rem] text-white font-semibold mb-3 font-['Onest',_sans-serif]">In Progress...</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-8 md:mb-10">
+        <h2 class="max-w-4xl mx-auto text-[1.25rem] md:text-[1.5rem] text-white font-semibold mb-4 font-['Onest',_sans-serif]">In Progress...</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto mb-8 md:mb-10">
             <ProjectCard 
             :image="'/images/projects/bitbot.png'" 
             :title="'BitBot'"
