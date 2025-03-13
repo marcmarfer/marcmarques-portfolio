@@ -41,6 +41,7 @@ const handleCursorLeave = () => {
 <template>
     <div>
         <h1 class="text-[2rem] md:text-center md:text-[2.5rem] text-white font-semibold mb-8 md:mb-10 font-['Onest',_sans-serif]">Projects</h1>
+        <h2 class="max-w-4xl mx-auto text-[1.25rem] md:text-[1.5rem] text-white font-semibold mb-4 font-['Onest',_sans-serif]">Tech Stack</h2>
         <TechStackBar
             :technologies="technologies"
             @mouseenter="handleCursorHover"

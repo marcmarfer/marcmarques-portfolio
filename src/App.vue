@@ -9,6 +9,9 @@ import { ref, provide } from 'vue';
 
 const isCursorVisible = ref(true);
 provide('isCursorVisible', isCursorVisible);
+
+const isModalOpen = ref(false);
+provide('isModalOpen', isModalOpen);
 </script>
 
 <template>

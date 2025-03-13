@@ -1,5 +1,7 @@
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, inject } from 'vue';
+
+const isModalOpen = inject('isModalOpen');
 
 const experienceButton = ref(null);
 const projectsButton = ref(null);
@@ -42,7 +44,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <nav>
+  <nav v-if="!isModalOpen">
     <div
       class="fixed text-white top-3.5 left-0 right-0 mx-auto w-fit max-w-[90%] h-5% flex justify-center items-center gap-1 font-['Onest'] rounded-[50px] bg-gray-500/10 backdrop-blur-md border border-[#545454] z-[999] px-4 py-2">
       <button ref="experienceButton" 
