@@ -1,0 +1,36 @@
+{
+    "launched": [
+        {
+            "image": "/images/projects/otio.png",
+            "title": "Otio App",
+            "technologies": ["Vue", "Tailwind CSS", "Laravel", "MySQL"],
+            "description": "Otio App is an online ticketing platform for tasting events, allowing businesses to create and manage events, sell tickets, and handle payments through Stripe. It provides a seamless experience for both organizers and customers, with tools for event scheduling, booking management, and automated notifications."
+        },
+        {
+            "image": "/images/projects/neumatrans.png",
+            "title": "Neumatrans Dashboard",
+            "technologies": ["Vue", "Tailwind CSS", "Laravel", "MySQL"],
+            "description": "Dashboard for managing operations at Neumatrans workshop. It covers customers, vehicles, repairs, and invoicing, with automated email updates on their repairs and AI powered statistical insights."
+        },
+        {
+            "image": "/images/projects/tloz.png",
+            "title": "TLOZ fight game",
+            "technologies": ["C++", "SFML"],
+            "description": "A fighting game of Link from 'The Legend Of Zelda' against an Ocktorock made with SFML library. It has it's animations, mechanics, collisions, target tracking, and more."
+        },
+        {
+            "image": "/images/projects/sandbox.png",
+            "title": "3D Sandbox",
+            "technologies": ["Threejs", "JavaScript", "HTML", "CSS"],
+            "description": "A 3D playground built on Three.js for testing and exploring game mechanics, shaders, textures, models, physics simulations, animations, and interactive elements."
+        }
+    ],
+    "inProgress": [
+        {
+            "image": "/images/projects/bitbot.png",
+            "title": "BitBot",
+            "technologies": ["Vue", "Tailwind CSS", "Laravel", "MySQL", "Python"],
+            "description": "For now it's a DeepSeek AI-powered web scraper that collects and analyzes financial news to generate real-time investment advice based on market trends and sentiment. In the future, it will use an open-source AI like Llama for this, while DeepSeek will handle the final decision-making to determine the best stock market to invest in. The system will also automate investments through an algorithm that optimizes both the amount to invest and the best moment to withdraw."
+        }
+    ]
+} 

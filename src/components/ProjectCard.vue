@@ -10,11 +10,18 @@ const props = defineProps({
     title: {
         type: String,
         required: true
+    },
+    technologies: {
+        type: Array,
+        default: () => []
+    },
+    description: {
+        type: String,
+        default: ''
     }
 });
 
 const showModal = ref(false);
-
 const openModal = () => {
     showModal.value = true;
 };
@@ -40,6 +47,8 @@ const closeModal = () => {
         :show="showModal" 
         :image="props.image" 
         :title="props.title" 
+        :technologies="props.technologies"
+        :description="props.description"
         @close="closeModal" 
     />
 </template>

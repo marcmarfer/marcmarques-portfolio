@@ -83,7 +83,7 @@ function maskClass() {
         v-for="technology in technologies" 
         :key="technology.name" 
         class="h-full w-auto flex-shrink-0 flex items-center justify-center object-contain pointer-events-none"
-        :src="`/images/${technology.icon}`" 
+        :src="technology.icon" 
         :alt="technology.name" 
       />
     </div>
