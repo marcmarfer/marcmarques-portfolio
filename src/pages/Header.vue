@@ -21,7 +21,6 @@ onMounted(() => {
     '#experience': experienceButton,
     '#projects': projectsButton,
     '#about-me': aboutMeButton,
-    '#contact': contactButton,
   }
 
   const offsetTop = 100;
@@ -39,6 +38,10 @@ onMounted(() => {
       });
     });
   }
+  
+  contactButton.value.addEventListener('click', () => {
+    window.location.href = 'mailto:marcmf2004@gmail.com';
+  });
 });
 
 </script>
@@ -49,16 +52,16 @@ onMounted(() => {
       class="fixed text-white top-3.5 left-0 right-0 mx-auto w-fit max-w-[90%] h-5% flex justify-center items-center gap-1 font-['Onest'] rounded-[50px] bg-gray-500/10 backdrop-blur-md border border-[#545454] z-[999] px-4 py-2">
       <button ref="experienceButton" 
         :style="{ color: currentPath === '#experience' ? '#fbf060' : '' }"
-        class="position-relative px-1.5 text-white text-base font-medium hover:text-[#fbf060]">experience</button>
+        class="position-relative px-1.5 text-white text-base font-medium hover:text-[#fbf060] cursor-none">experience</button>
       <button ref="projectsButton" 
         :style="{ color: currentPath === '#projects' ? '#fbf060' : '' }"
-        class="position-relative px-1.5 text-white text-base font-medium hover:text-[#fbf060]">projects</button>
+        class="position-relative px-1.5 text-white text-base font-medium hover:text-[#fbf060] cursor-none">projects</button>
       <button ref="aboutMeButton" 
         :style="{ color: currentPath === '#about-me' ? '#fbf060' : '' }"
-        class="position-relative px-1.5 text-white text-base font-medium hover:text-[#fbf060]">about</button>
+        class="position-relative px-1.5 text-white text-base font-medium hover:text-[#fbf060] cursor-none">about</button>
       <button ref="contactButton"
         :style="{ color: currentPath === '#contact' ? '#fbf060' : '' }"
-        class="position-relative px-1.5 text-white text-base font-medium hover:text-[#fbf060]">contact</button>
+        class="position-relative px-1.5 text-white text-base font-medium hover:text-[#fbf060] cursor-none">contact</button>
     </div>
   </nav>
 </template>

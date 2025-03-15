@@ -14,7 +14,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { ref, onMounted, onUnmounted, nextTick } from 'vue';
 import avatarModel from '@/assets/models/marc-model.glb';
-const jsLogoUrl = '/images/javascript.png';
+const jsLogoUrl = '/images/icons/javascript.png';
 
 // Reactive state
 const loading = ref(true);

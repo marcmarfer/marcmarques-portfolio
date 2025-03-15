@@ -23,7 +23,3 @@ body {
   cursor: none;
   overflow: auto;
 }
-
-a, button, .clickable {
-  cursor: none;
-}
