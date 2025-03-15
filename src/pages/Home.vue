@@ -12,7 +12,7 @@ import Avatar from '../components/Avatar.vue';
                 <p class="text-xl md:text-2xl text-[#ccc] m-0 font-extralight">Building modern, efficient, and reliable
                     web solutions.</p>
                 
-                <div class="flex gap-4 mt-6">
+                <div class="flex gap-4 mt-3">
                     <a href="https://github.com/marcmarfer" target="_blank" rel="noopener noreferrer"
                        class="inline-flex items-center justify-center px-4 py-2 bg-transparent text-gray-200 rounded-md border border-gray-400 hover:bg-gray-500/30 transition-colors duration-200">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 24 24" fill="currentColor">

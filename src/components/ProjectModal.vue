@@ -87,7 +87,7 @@ onUnmounted(() => {
                     </svg>
                 </button>
 
-                <div class="flex flex-col md:flex-row max-w-5xl mx-auto my-20 md:my-0 md:min-h-screen md:items-center px-8 gap-8">
+                <div class="flex flex-col md:flex-row max-w-5xl mx-auto my-20 md:my-0 md:min-h-screen md:items-center px-8 gap-6">
                     <div class="flex items-center md:w-[50%]">
                         <img :src="image" :alt="title" class="w-full max-w-[250px] md:max-w-full h-auto object-contain rounded-lg shadow-lg">
                     </div>
