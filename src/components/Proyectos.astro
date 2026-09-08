@@ -1,0 +1,66 @@
+---
+import { proyectos } from "../data/proyectos";
+---
+
+<section
+  id="proyectos"
+  class="scroll-mt-24 border-t border-[var(--line)] py-28 sm:py-32"
+>
+  <div class="mx-auto max-w-[1180px] px-6 sm:px-10">
+    <div data-reveal class="text-center">
+      <p class="eyebrow">Proyectos</p>
+      <h2
+        class="mx-auto mt-4 max-w-[780px] text-[1.75rem] font-medium leading-[1.16] tracking-[-0.02em] sm:text-[2.5rem]"
+      >
+        Cosas que he construido.{" "}
+        <span class="text-[var(--muted)]">Selección reciente.</span>
+      </h2>
+    </div>
+
+    <div class="mt-14 sm:mt-16">
+      {
+        proyectos.map((p, i) => {
+          const Tag = p.url ? "a" : "div";
+          return (
+            <Tag
+              href={p.url || undefined}
+              data-reveal={String(i)}
+              class="group grid grid-cols-[64px_1fr] gap-x-6 gap-y-2 border-t border-[var(--line)] px-1 py-7 transition-colors duration-200 last:border-b sm:grid-cols-[76px_1fr_auto] sm:items-baseline sm:gap-9 sm:py-8 [&:hover]:bg-[color-mix(in_srgb,var(--ink)_3%,transparent)]"
+            >
+              <span class="text-sm text-[var(--muted)]">{p.periodo}</span>
+
+              <span class="col-start-2">
+                <span class="inline-block text-[1.375rem] font-medium tracking-[-0.01em] transition-transform duration-200 will-change-transform group-hover:translate-x-1 motion-reduce:transform-none! motion-reduce:transition-none">
+                  {p.titulo}
+                </span>
+                <span class="mt-1.5 block max-w-[46ch] text-[0.95rem] leading-[1.5] text-[var(--muted)]">
+                  {p.descripcion}
+                </span>
+              </span>
+
+              <span class="col-start-2 mt-1 inline-flex items-center gap-3 text-[13px] text-[var(--muted)] sm:col-start-3 sm:mt-0 sm:whitespace-nowrap">
+                {p.tags.join(" · ")}
+                {p.url && (
+                  <svg
+                    class="-translate-x-1 translate-y-1 opacity-0 transition duration-200 group-hover:translate-x-0 group-hover:translate-y-0 group-hover:opacity-100 motion-reduce:translate-x-0! motion-reduce:translate-y-0! motion-reduce:transition-none"
+                    width="15"
+                    height="15"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M7 17 17 7M9 7h8v8" />
+                  </svg>
+                )}
+              </span>
+            </Tag>
+          );
+        })
+      }
+    </div>
+  </div>
+</section>

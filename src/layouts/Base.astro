@@ -1,0 +1,114 @@
+---
+import "../styles/global.css";
+import { site } from "../data/site";
+
+interface Props {
+  titulo?: string;
+  descripcion?: string;
+}
+
+const {
+  titulo = `${site.nombre} — ${site.rol}`,
+  descripcion = site.descripcion,
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={canonical} />
+
+    <title>{titulo}</title>
+    <meta name="description" content={descripcion} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={titulo} />
+    <meta property="og:description" content={descripcion} />
+    <meta property="og:url" content={canonical} />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Schibsted+Grotesk:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Aplica el tema y marca JS antes de pintar para evitar parpadeo -->
+    <script is:inline>
+      document.documentElement.classList.add("js");
+      (() => {
+        try {
+          const stored = localStorage.getItem("theme");
+          const prefersDark = window.matchMedia(
+            "(prefers-color-scheme: dark)",
+          ).matches;
+          if (stored === "dark" || (!stored && prefersDark)) {
+            document.documentElement.classList.add("dark");
+          }
+        } catch (_) {}
+      })();
+    </script>
+  </head>
+  <body class="min-h-screen">
+    <a
+      href="#contenido"
+      class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-lg focus:bg-[var(--accent)] focus:px-4 focus:py-2 focus:text-white"
+    >
+      Saltar al contenido
+    </a>
+    <slot />
+
+    <!-- Reloj de la barra superior -->
+    <script is:inline>
+      (() => {
+        const el = document.getElementById("clock");
+        if (!el) return;
+        const tick = () => {
+          el.textContent = new Date().toLocaleTimeString("es-ES", {
+            hour: "2-digit",
+            minute: "2-digit",
+          });
+        };
+        tick();
+        setInterval(tick, 15000);
+      })();
+    </script>
+
+    <!-- Aparición al hacer scroll (una sola vez) -->
+    <script is:inline>
+      (() => {
+        const els = document.querySelectorAll("[data-reveal]");
+        if (!els.length) return;
+        const reduce = window.matchMedia(
+          "(prefers-reduced-motion: reduce)",
+        ).matches;
+        if (reduce || !("IntersectionObserver" in window)) {
+          els.forEach((el) => el.classList.add("is-revealed"));
+          return;
+        }
+        const io = new IntersectionObserver(
+          (entries) => {
+            for (const entry of entries) {
+              if (!entry.isIntersecting) continue;
+              const el = entry.target;
+              const step = Number(el.dataset.reveal) || 0;
+              if (step) {
+                el.style.setProperty("--reveal-delay", step * 60 + "ms");
+              }
+              el.classList.add("is-revealed");
+              io.unobserve(el);
+            }
+          },
+          { rootMargin: "0px 0px -12% 0px", threshold: 0.05 },
+        );
+        els.forEach((el) => io.observe(el));
+      })();
+    </script>
+  </body>
+</html>

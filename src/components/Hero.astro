@@ -1,0 +1,50 @@
+---
+import { site } from "../data/site";
+
+// "texto {palabra} texto" -> partes; los índices impares van en cursiva serif
+const parts = site.claimMain.split(/\{([^}]+)\}/);
+---
+
+<section class="mx-auto max-w-[1180px] px-6 pt-28 pb-32 text-center sm:px-10 sm:pt-32 sm:pb-40">
+  {
+    site.disponible && (
+      <span
+        data-reveal
+        class="mb-10 inline-flex items-center gap-2 text-[13px] text-[var(--muted)]"
+      >
+        <span class="h-1.5 w-1.5 rounded-full bg-[var(--accent)]" />
+        Disponible para nuevos proyectos
+      </span>
+    )
+  }
+
+  <h1
+    data-reveal="1"
+    class="mx-auto max-w-[940px] text-[2.35rem] font-medium leading-[1.12] tracking-[-0.022em] sm:text-[3.75rem] sm:leading-[1.09]"
+  >
+    <span class="text-[var(--muted)]">{site.claimLead}</span>{" "}
+    {parts.map((part, i) => (i % 2 === 1 ? <em>{part}</em> : <span>{part}</span>))}
+  </h1>
+
+  <a
+    href="#proyectos"
+    data-reveal="2"
+    class="mt-16 inline-flex flex-col items-center gap-2.5 text-[13px] tracking-[0.04em] text-[var(--muted)] transition-colors hover:text-[var(--ink)]"
+  >
+    Ver proyectos
+    <svg
+      class="cue-bob"
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="1.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M6 9l6 6 6-6"></path>
+    </svg>
+  </a>
+</section>

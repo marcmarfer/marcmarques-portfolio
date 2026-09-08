@@ -1,0 +1,38 @@
+---
+import { stack } from "../data/stack";
+import { stackIconPaths } from "../data/stackIcons";
+
+const loop = [...stack, ...stack];
+---
+
+<section id="stack" class="scroll-mt-24 border-t border-[var(--line)] py-28 sm:py-32">
+  <div data-reveal class="mx-auto max-w-[1180px] px-6 text-center sm:px-10">
+    <p class="eyebrow">Stack</p>
+    <h2
+      class="mx-auto mt-4 max-w-[780px] text-[1.75rem] font-medium leading-[1.16] tracking-[-0.02em] sm:text-[2.5rem]"
+    >
+      Las herramientas del día a día.{" "}
+      <span class="text-[var(--muted)]">En evolución constante.</span>
+    </h2>
+  </div>
+
+  <div data-reveal="1" class="marquee mt-14">
+    <div class="marquee-track">
+      {
+        loop.map((name, i) => (
+          <span
+            class="mr-14 inline-flex flex-none items-center gap-3 whitespace-nowrap text-[15px] text-[var(--ink)] opacity-50 [&_svg]:h-[18px] [&_svg]:w-[18px] [&_svg]:flex-none"
+            aria-hidden={i >= stack.length ? "true" : undefined}
+          >
+            {stackIconPaths[name] && (
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d={stackIconPaths[name]} />
+              </svg>
+            )}
+            {name}
+          </span>
+        ))
+      }
+    </div>
+  </div>
+</section>
