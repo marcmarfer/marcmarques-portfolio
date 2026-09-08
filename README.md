@@ -56,5 +56,9 @@ src/
 
 ## Despliegue
 
-`npm run build` genera un sitio estático en `dist/`, desplegable tal cual en
-Netlify, Vercel, Cloudflare Pages o GitHub Pages.
+Desplegado en **Cloudflare** (Workers con assets estáticos) desde `main`. La
+config está en `wrangler.jsonc` (`assets.directory = ./dist`). Cloudflare corre
+`npm run build` y luego `npx wrangler deploy` en cada push.
+
+El resultado de `npm run build` (`dist/`) es estático y también se puede subir a
+Netlify, Vercel o GitHub Pages sin cambios.
